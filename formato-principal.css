@@ -1,0 +1,338 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Montserrat', sans-serif;
+}
+
+h1,
+h2 {
+    margin: 1rem;
+    text-align: center;
+    color: rgb(0, 73, 129);
+    position: sticky;
+
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.action-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-style: none;
+    background-color: rgb(255, 217, 0);
+    color: rgb(0, 73, 129);
+    transition: all infinite ease-in-out 0s;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.action-button:hover {
+    background-color: rgb(164, 232, 240);
+    cursor: pointer;
+    box-shadow: 0px 15px 20px rgba(46, 104, 229, 0.4);
+}
+
+.contenedor-principal {
+    margin-top: 5rem;
+    margin-inline: 3rem;
+    margin-bottom: 1rem;
+    background-color: cadetblue;
+    border-style: solid;
+    border-color: rgb(0, 73, 129);
+}
+
+.fila {
+    margin: 1rem;
+    background-color: cadetblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.proyecto {
+    margin: 1rem;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid #000000;
+    text-decoration: none;
+    padding: 5rem;
+    background-image: url(./static/logo-a326242dd945bcc271d193f7e6d2f054.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.proyecto:hover {
+    padding: 5.5rem;
+    margin: 0.5rem;
+    border-color: red;
+    border-width: 3px;
+}
+
+.inicio {
+    display: none;
+}
+
+.contenedor-modelo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.barra-inferior {
+    background-color: transparent;
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.active-button {
+    background-color: rgb(164, 232, 240);
+    cursor: pointer;
+}
+
+.ifc-property-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5rem;
+    border-bottom: solid 1px gray;
+}
+
+.ifc-property-value {
+    width: 100%;
+    text-align: right;
+}
+
+.ifc-property-menu {
+    border: 1px solid gray;
+    width: 20rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.floor-item {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-inline: 2px;
+    text-align: left;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.floor-item:hover {
+    background-color: rgb(255, 217, 0);
+    font-weight: bold;
+}
+
+.floor-item-active {
+    background-color: rgb(255, 217, 0);
+    font-weight: bold;
+}
+
+#viewrer-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+#floor-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 1rem;
+    left: 1rem;
+}
+
+.tree-structure {
+    height: 95%;
+    overflow-y: auto;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.tree-header {
+    height: 5%;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: rgb(255, 217, 0);
+    border: black solid 1px;
+    border-bottom: none;
+}
+
+#tree-container {
+    position: absolute;
+    width: 30%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.checkboxes {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+}
+
+.checkboxes input {
+    margin-right: 10px;
+}
+
+.checkboxes div {
+    padding: 5px;
+}
+
+/* Estructura de arbol IFC. Fuente: https://www.w3schools.com/howto/howto_js_treeview.asp */
+
+/* Remove default bullets */
+ul,
+#myUL {
+    list-style-type: none;
+}
+
+/* Remove margins and padding from the parent ul */
+#myUL {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+    cursor: pointer;
+    user-select: none;
+    /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+    display: none;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+    display: block;
+}
+
+.leaf-node {
+    cursor: pointer;
+}
+
+/* Estructura de menú contextual. Fuente: https://www.codingnepalweb.com/right-click-context-menu-html-javascript/ */
+
+.wrapper {
+    display: none;
+    position: absolute;
+    width: 300px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .menu {
+    padding: 10px 12px;
+}
+
+.content .item {
+    list-style: none;
+    font-size: 22px;
+    height: 50px;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    padding: 0 5px 0 10px;
+}
+
+.content .item:hover {
+    background: rgb(255, 217, 0);
+}
+
+.content .item span {
+    margin-left: 8px;
+    font-size: 19px;
+}
+
+.content .visualization {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ccc;
+}
+
+.content .annotation {
+    position: relative;
+    justify-content: space-between;
+}
+
+.annotation .annotation-menu {
+    position: absolute;
+    background: #fff;
+    width: 200px;
+    right: -200px;
+    padding: 13px;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
+}
+
+.annotation:hover .annotation-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.option-close {
+    color: grey;
+    pointer-events: none;
+}
+
+.categories-structure {
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.categories-header {
+    height: 5%;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: rgb(255, 217, 0);
+    border: black solid 1px;
+    border-bottom: none;
+}
+
+input:checked{
+    accent-color: rgb(255, 217, 0);
+}
